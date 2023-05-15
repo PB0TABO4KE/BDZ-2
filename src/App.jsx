@@ -4,7 +4,6 @@ import { Routes, Route, Link } from "react-router-dom";
 
 // Компоненты
 import { Header, Footer, MobileMenu } from "./components/General";
-import Search from "./components/Search";
 import Modal from "./components/Modal";
 
 //Страницы
@@ -47,7 +46,6 @@ const App = () => {
 
 
     useEffect(() => {
-        console.log("User was changed")
         if (user) {
             setToken(localStorage.getItem("rockToken"));
             setUserId(localStorage.getItem("rockId"));
@@ -56,8 +54,6 @@ const App = () => {
             setToken("");
             setUserId("");
         }
-        console.log("U ", user);
-        console.log("t ", token);
     }, [user])
 
     return (

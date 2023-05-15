@@ -1,5 +1,5 @@
 import Card from "../components/Card";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 
 
@@ -15,7 +15,7 @@ const Catalog = ({ goods, setServerGoods }) => {
     const sortHandler = (vector) => {
         if (vector === sort) {
             setSort(null)
-            setServerGoods(old => old.sort((a,b) => new Date (a.created_at).getTime() - new Date (b.created_at).getTime()))
+            setServerGoods(old => old.sort((a, b) => new Date(a.created_at).getTime() - new Date(b.created_at).getTime()))
         }
         else {
             setSort(vector);
@@ -33,7 +33,7 @@ const Catalog = ({ goods, setServerGoods }) => {
             {/*Фильтрация*/}
             <button>Новинки</button>
             <button>Скидки</button>
-         
+
         </div>
         {goods?.map(g => <Card key={g._id} {...g} img={g.pictures} setServerGoods={setServerGoods} />)}
     </div>

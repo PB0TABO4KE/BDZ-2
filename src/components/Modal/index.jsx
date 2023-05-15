@@ -1,27 +1,20 @@
 import { useState } from "react";
-import { useNavigate } from "react-router";
 import "./style.css";
 
 const Modal = ({ active, setActive, setUser }) => {
     const [auth, setAuth] = useState(true);
-
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [pwd, setPwd] = useState("");
     const [testPwd, setTestPwd] = useState("");
-
     const testAccess = {
         color: pwd === testPwd ? "forestgreen" : "crimson"
     }
-
-
-
     const switchAuth = (e) => {
         e.preventDefault();
         setAuth(!auth);
         clearForm();
     }
-
     const clearForm = () => {
         setName("");
         setEmail("");
@@ -38,10 +31,8 @@ const Modal = ({ active, setActive, setUser }) => {
             body.name = name;
             body.group = "group-12";
         }
-        let log = "https://api.react-learning.ru/signin"; // вход
-        let reg = "https://api.react-learning.ru/signup"; // регистрация
-
-        // Регистрация !== вход (после добавления пользователя в БД, нужно будет повторно войти в аккаунт)
+        let log = "https://api.react-learning.ru/signin";
+        let reg = "https://api.react-learning.ru/signup";
         let res = await fetch(auth ? log : reg, {
             method: "POST",
             headers: {
@@ -100,7 +91,6 @@ const Modal = ({ active, setActive, setUser }) => {
                     Имя пользователя
                     <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
                 </label>}
-
                 <label>
                     Электронный адрес
                     <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
@@ -109,16 +99,13 @@ const Modal = ({ active, setActive, setUser }) => {
                     Пароль
                     <input type="password" value={pwd} onChange={(e) => setPwd(e.target.value)} />
                 </label>
-
                 {!auth && <label>
                     Повторить пароль
                     <input type="password" value={testPwd} onChange={(e) => setTestPwd(e.target.value)} style={testAccess} /*пример того, как присать можно стили style={{border: "1px solid", backgroundColor: "blueviolet"}}*/
                     />
                 </label>}
-
                 <div className="modal-ctl">
                     <button className="modal-btn"
-                        /*disabled кнопки если, это не форма авторизации, нет пароля или пароли не совпадают */
                         disabled={!auth && (!pwd || pwd !== testPwd)}>
                         {auth ? "Войти" : "Зарегистрироваться"} </button>
                     <a href="" className="modal-link" onClick={switchAuth}>{auth ? "Регистрация" : "Войти"}</a>
