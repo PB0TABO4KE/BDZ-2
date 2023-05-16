@@ -14,6 +14,7 @@
 1. [Create React App.](https://github.com/facebook/create-react-app)
 2. [React Router.](https://reactrouter.com/en/main)
 3. [Classnames.](https://www.npmjs.com/package/classnames)
+4. [NewsAPI.](https://newsapi.org/docs/client-libraries/node-js)
 
 ## Доступные скрипты
 
